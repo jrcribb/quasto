@@ -600,6 +600,9 @@ The Logger framework is open-source and you can download it on GitHub: https://g
 ### - Using the Logger -
 After installation of the Logger framework, it allows developers to include procedure calls to the framework in their own procedures or function codes.
 
+Use the script to grant your quasto scheme logger access.
+<code>@scripts/grant_logger_to_user.sql <grant_to_username></code>
+
 Log entries are accessible over the logger table and two different views:
 - <code>logger_logs</code>
 - <code>logger_logs_5_min</code>
