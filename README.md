@@ -1,4 +1,4 @@
-# QUASTO - The Quality Assurance Tool for Oracle databases
+# QUASTO - Quality Assurance Tool for Oracle databases
 ## Table of Contents
 
 - [QUASTO framework](#quasto-framework)
