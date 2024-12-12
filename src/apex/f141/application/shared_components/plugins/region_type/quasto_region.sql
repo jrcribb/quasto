@@ -4,8 +4,8 @@ begin
 --     PLUGIN: QUASTO_REGION
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
+ p_version_yyyy_mm_dd=>'2024.05.31'
+,p_release=>'24.1.5'
 ,p_default_workspace_id=>33657925800256602
 ,p_default_application_id=>141
 ,p_default_id_offset=>33662320935301187
@@ -153,11 +153,11 @@ wwv_flow_imp_shared.create_plugin(
 '  return l_region_render_result;',
 'end render_qa_region;',
 ''))
-,p_default_escape_mode=>'HTML'
-,p_api_version=>2
+,p_api_version=>1
 ,p_render_function=>'render_qa_region'
 ,p_standard_attributes=>'FETCHED_ROWS:NO_DATA_FOUND_MESSAGE'
 ,p_substitute_attributes=>true
+,p_version_scn=>1
 ,p_subscribe_plugin_settings=>true
 ,p_version_identifier=>'1.0'
 ,p_about_url=>'https://github.com/mt-ag/quasto'
@@ -169,6 +169,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
 ,p_display_sequence=>10
+,p_static_id=>'attribute_01'
 ,p_prompt=>'Client Name'
 ,p_attribute_type=>'TEXT'
 ,p_is_required=>false
@@ -180,6 +181,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
 ,p_display_sequence=>20
+,p_static_id=>'attribute_02'
 ,p_prompt=>'Rule Number'
 ,p_attribute_type=>'TEXT'
 ,p_is_required=>false
@@ -191,6 +193,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>3
 ,p_display_sequence=>30
+,p_static_id=>'attribute_03'
 ,p_prompt=>'Applicaiton ID'
 ,p_attribute_type=>'TEXT'
 ,p_is_required=>false
@@ -203,24 +206,16 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>4
 ,p_display_sequence=>40
+,p_static_id=>'attribute_04'
 ,p_prompt=>'Page ID'
 ,p_attribute_type=>'TEXT'
 ,p_is_required=>false
 ,p_default_value=>'&APP_PAGE_ID.'
 ,p_is_translatable=>false
 );
-wwv_flow_imp.component_end;
 end;
 /
 begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
-);
 wwv_flow_imp.g_varchar2_table := wwv_flow_imp.empty_varchar2_table;
 wwv_flow_imp.g_varchar2_table(1) := '0D0A0D0A2E7461626C652D737464207B0D0A20202020626F726465722D7374796C653A20736F6C69643B0D0A20202020626F726465722D636F6C6C617073653A20636F6C6C617073653B0D0A20202020626F726465722D77696474683A203170783B0D0A';
 wwv_flow_imp.g_varchar2_table(2) := '20202020626F726465722D636F6C6F723A20236536653665363B0D0A20202020626F726465722D73706163696E673A20303B0D0A7D0D0A2E7461626C652D686561646572207B0D0A20202020636F6C6F723A20233333376163303B0D0A20202020616C69';
@@ -233,19 +228,9 @@ wwv_flow_imp.g_varchar2_table(8) := '3665363B0D0A20202020626F726465722D7374796C6
 wwv_flow_imp.g_varchar2_table(9) := '706163696E673A20303B0D0A20202020666F6E742D73697A653A202E373572656D3B0D0A202020206C696E652D6865696768743A203172656D3B0D0A2020202070616464696E672D626C6F636B2D656E643A202E373572656D3B0D0A2020202070616464';
 wwv_flow_imp.g_varchar2_table(10) := '696E672D626C6F636B2D73746172743A202E373572656D3B0D0A2020202070616464696E672D696E6C696E652D656E643A202E373572656D3B0D0A2020202070616464696E672D696E6C696E652D73746172743A202E373572656D3B0D0A202020207665';
 wwv_flow_imp.g_varchar2_table(11) := '72746963616C2D616C69676E3A20626F74746F6D3B0D0A7D';
-null;
-wwv_flow_imp.component_end;
 end;
 /
 begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
-);
 wwv_flow_imp_shared.create_plugin_file(
  p_id=>wwv_flow_imp.id(53734981416808917)
 ,p_plugin_id=>wwv_flow_imp.id(42944716633863174)
@@ -254,18 +239,9 @@ wwv_flow_imp_shared.create_plugin_file(
 ,p_file_charset=>'utf-8'
 ,p_file_content=>wwv_flow_imp.varchar2_to_blob(wwv_flow_imp.g_varchar2_table)
 );
-wwv_flow_imp.component_end;
 end;
 /
 begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
-);
 wwv_flow_imp.g_varchar2_table := wwv_flow_imp.empty_varchar2_table;
 wwv_flow_imp.g_varchar2_table(1) := '2E7461626C652D7374647B626F726465722D7374796C653A736F6C69643B626F726465722D636F6C6C617073653A636F6C6C617073653B626F726465722D77696474683A3170783B626F726465722D636F6C6F723A236536653665363B626F726465722D';
 wwv_flow_imp.g_varchar2_table(2) := '73706163696E673A307D2E7461626C652D6865616465727B636F6C6F723A233333376163303B616C69676E2D636F6E74656E743A696E697469616C3B6261636B67726F756E642D636F6C6F723A236636663666363B666F6E742D7765696768743A373030';
@@ -273,19 +249,9 @@ wwv_flow_imp.g_varchar2_table(3) := '3B7472616E736974696F6E3A6261636B67726F756E6
 wwv_flow_imp.g_varchar2_table(4) := '726465722D77696474683A3170783B626F726465722D636F6C6C617073653A636F6C6C617073653B626F726465722D73706163696E673A303B666F6E742D73697A653A2E373572656D3B6C696E652D6865696768743A3172656D3B70616464696E672D62';
 wwv_flow_imp.g_varchar2_table(5) := '6C6F636B2D656E643A2E373572656D3B70616464696E672D626C6F636B2D73746172743A2E373572656D3B70616464696E672D696E6C696E652D656E643A2E373572656D3B70616464696E672D696E6C696E652D73746172743A2E373572656D3B766572';
 wwv_flow_imp.g_varchar2_table(6) := '746963616C2D616C69676E3A626F74746F6D7D';
-null;
-wwv_flow_imp.component_end;
 end;
 /
 begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
-);
 wwv_flow_imp_shared.create_plugin_file(
  p_id=>wwv_flow_imp.id(53803459698286507)
 ,p_plugin_id=>wwv_flow_imp.id(42944716633863174)
@@ -294,6 +260,9 @@ wwv_flow_imp_shared.create_plugin_file(
 ,p_file_charset=>'utf-8'
 ,p_file_content=>wwv_flow_imp.varchar2_to_blob(wwv_flow_imp.g_varchar2_table)
 );
+end;
+/
+begin
 wwv_flow_imp.component_end;
 end;
 /

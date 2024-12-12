@@ -4,8 +4,8 @@ begin
 --     THEME OPTION GROUPS: 141
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
+ p_version_yyyy_mm_dd=>'2024.05.31'
+,p_release=>'24.1.5'
 ,p_default_workspace_id=>33657925800256602
 ,p_default_application_id=>141
 ,p_default_id_offset=>33662320935301187
@@ -1116,18 +1116,6 @@ wwv_flow_imp_shared.create_template_opt_group(
 ,p_null_text=>'Default'
 ,p_is_advanced=>'Y'
 );
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
-);
 wwv_flow_imp_shared.create_template_opt_group(
  p_id=>wwv_flow_imp.id(50869393495675185)
 ,p_theme_id=>42
@@ -1139,7 +1127,6 @@ wwv_flow_imp_shared.create_template_opt_group(
 ,p_null_text=>'Default'
 ,p_is_advanced=>'Y'
 );
-null;
 wwv_flow_imp.component_end;
 end;
 /

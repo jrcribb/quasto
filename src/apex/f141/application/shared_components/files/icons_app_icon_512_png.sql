@@ -4,8 +4,8 @@ begin
 --     APP STATIC FILES: 141
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
+ p_version_yyyy_mm_dd=>'2024.05.31'
+,p_release=>'24.1.5'
 ,p_default_workspace_id=>33657925800256602
 ,p_default_application_id=>141
 ,p_default_id_offset=>33662320935301187
@@ -149,19 +149,6 @@ wwv_flow_imp.g_varchar2_table(134) := '00012B0204002B9DA24E041040000104220A10002
 wwv_flow_imp.g_varchar2_table(135) := 'FF0205FF81F9C7658508206055800060B573D48D0002082080408000012000AFFA5BF9CDBAFA2D00000208D8152000D8ED1D951340D8033905D86F39B523CFC5574F4F054A0088BCCD18CE8FC0B0FFDE0FFBDFFD48D4B512FA5A57BF6B5E2D01A0E6EEB3';
 wwv_flow_imp.g_varchar2_table(136) := '7604104000816A050800D5B69E852380000208D42C400098A6FB3C0AACF99F066B470001047C0B10007CF797D521800002082030A50001808D81000208208040850204800A9BCE921140000104102000B007104000010410A850E0FF0338D7D669E3464A';
 wwv_flow_imp.g_varchar2_table(137) := '490000000049454E44AE426082';
-null;
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
-);
 wwv_flow_imp_shared.create_app_static_file(
  p_id=>wwv_flow_imp.id(50871718200675206)
 ,p_file_name=>'icons/app-icon-512.png'
@@ -169,7 +156,6 @@ wwv_flow_imp_shared.create_app_static_file(
 ,p_file_charset=>'utf-8'
 ,p_file_content => wwv_flow_imp.varchar2_to_blob(wwv_flow_imp.g_varchar2_table)
 );
-null;
 wwv_flow_imp.component_end;
 end;
 /

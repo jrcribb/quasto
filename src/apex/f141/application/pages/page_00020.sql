@@ -4,8 +4,8 @@ begin
 --     PAGE: 00020
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
+ p_version_yyyy_mm_dd=>'2024.05.31'
+,p_release=>'24.1.5'
 ,p_default_workspace_id=>33657925800256602
 ,p_default_application_id=>141
 ,p_default_id_offset=>33662320935301187
@@ -20,8 +20,6 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'17'
-,p_last_updated_by=>'PHILIPP.DAHLEM@HYAND.COM'
-,p_last_upd_yyyymmddhh24miss=>'20240627174458'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(18126053872567136)
@@ -29,6 +27,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(50728801114675111)
 ,p_plug_display_sequence=>20
+,p_location=>null
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<h1>Sample Page to demonstrate the functionality of the QUASTO Region Plugin</h1>',
 '',
@@ -57,8 +56,9 @@ wwv_flow_imp_page.create_page_plug(
 '    <li>Page ID => pass a custom ID or default PAGE ID of your current Page (e.g. "&amp;PAGE_ID.") or leave empty to run rules for all Pages</li>',
 '    <li>Rule Number => pass the Rule number or leave empty to test all Rules. Right now it is necessary that the user creates their own select list. An example is P20_RULE_SELECTION of this page</li>',
 '</ul>'))
-,p_attribute_01=>'N'
-,p_attribute_02=>'HTML'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'expand_shortcuts', 'N',
+  'output_as', 'HTML')).to_clob
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(62488812881968151)
@@ -68,12 +68,14 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_template=>wwv_flow_imp.id(50780356327675132)
 ,p_plug_display_sequence=>10
 ,p_plug_display_point=>'SUB_REGIONS'
+,p_location=>null
 ,p_plug_source_type=>'PLUGIN_QUASTO_REGION'
 ,p_plug_query_num_rows=>15
-,p_attribute_01=>'&P20_CLIENT_NAME.'
-,p_attribute_02=>'&P20_RULE_SELECTION.'
-,p_attribute_03=>'&P20_APP_ID.'
-,p_attribute_04=>'&P20_APP_PAGE_ID.'
+,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
+  'attribute_01', '&P20_CLIENT_NAME.',
+  'attribute_02', '&P20_RULE_SELECTION.',
+  'attribute_03', '&P20_APP_ID.',
+  'attribute_04', '&P20_APP_PAGE_ID.')).to_clob
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(37288452984645603)

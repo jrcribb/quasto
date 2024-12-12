@@ -4,8 +4,8 @@ begin
 --     FLOW: 141
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
+ p_version_yyyy_mm_dd=>'2024.05.31'
+,p_release=>'24.1.5'
 ,p_default_workspace_id=>33657925800256602
 ,p_default_application_id=>141
 ,p_default_id_offset=>33662320935301187
@@ -21,6 +21,7 @@ wwv_imp_workspace.create_flow(
 ,p_checksum_salt=>'9AC41E02D39C3D5E83A9E01377D839F72C884F8CF0068184C398674912DC5651'
 ,p_bookmark_checksum_function=>'SH512'
 ,p_compatibility_mode=>'21.2'
+,p_accessible_read_only=>'N'
 ,p_session_state_commits=>'IMMEDIATE'
 ,p_flow_language=>'en'
 ,p_flow_language_derived_from=>'FLOW_PRIMARY_LANGUAGE'
@@ -52,8 +53,6 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_value_02=>'MM/DD/YYYY'
 ,p_substitution_string_03=>'PROVIDER_SLOGAN'
 ,p_substitution_value_03=>'Copyright 2024 Hyand Solutions GmbH'
-,p_last_updated_by=>'MAURICE.WILHELM@HYAND.COM'
-,p_last_upd_yyyymmddhh24miss=>'20240723141130'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>9
 ,p_print_server_type=>'NATIVE'

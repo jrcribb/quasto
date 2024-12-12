@@ -4,8 +4,8 @@ begin
 --     THEME OPTIONS: 141
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
+ p_version_yyyy_mm_dd=>'2024.05.31'
+,p_release=>'24.1.5'
 ,p_default_workspace_id=>33657925800256602
 ,p_default_application_id=>141
 ,p_default_id_offset=>33662320935301187
@@ -937,18 +937,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_template_types=>'REGION'
 ,p_help_text=>'Show success alert.'
 ,p_is_advanced=>'N'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
 );
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(50726203722675110)
@@ -1898,18 +1886,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_group_id=>wwv_flow_imp.id(50770881954675129)
 ,p_template_types=>'REGION'
 );
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
-);
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(50771469841675130)
 ,p_theme_id=>42
@@ -2857,18 +2833,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_css_classes=>'t-AVPList--fixedLabelLarge'
 ,p_group_id=>wwv_flow_imp.id(50799092115675141)
 ,p_template_types=>'REPORT'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
 );
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(50799483203675141)
@@ -3840,18 +3804,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_template_types=>'LIST'
 ,p_is_advanced=>'N'
 );
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
-);
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(50821440290675153)
 ,p_theme_id=>42
@@ -4811,18 +4763,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_group_id=>wwv_flow_imp.id(50841496103675162)
 ,p_template_types=>'LIST'
 ,p_is_advanced=>'N'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
 );
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(50841854786675162)
@@ -5836,18 +5776,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_css_classes=>'t-Form-fieldContainer--stretchInputs'
 ,p_template_types=>'FIELD'
 ,p_help_text=>'Stretches the form item to fill its container.'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.6'
-,p_default_workspace_id=>33657925800256602
-,p_default_application_id=>141
-,p_default_id_offset=>33662320935301187
-,p_default_owner=>'QUASTO'
 );
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(50868804383675185)
