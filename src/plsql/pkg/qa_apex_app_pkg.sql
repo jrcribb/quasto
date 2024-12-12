@@ -45,6 +45,12 @@ create or replace package qa_apex_app_pkg is
    * @param pi_qatr_id defines the xml test result id
   */
   procedure p_download_unit_test_xml(pi_qatr_id in number);
+  
+  /**
+   * procedure to fill the collection FACETED_SEARCH_DASHBOARD_DATA_P0001
+   * with the dashboard data to improve the performance
+  */
+  procedure p_fill_faceted_search_collection;
 
 end qa_apex_app_pkg;
 /
@@ -287,6 +293,26 @@ create or replace package body qa_apex_app_pkg as
                             ,p_params => l_param_list);
       raise;
   end p_download_unit_test_xml;
+  
+ procedure p_fill_faceted_search_collection
+  is
+   c_unit constant varchar2(32767) := $$plsql_unit || '.p_fill_faceted_search_collection';
+   l_param_list qa_logger_pkg.tab_param;
+  begin
+  
+    apex_collection.create_collection_from_query (
+    p_collection_name    => 'FACETED_SEARCH_DASHBOARD_DATA_P0001',
+    p_query              => 'select qatr_id,qatr_date,qatr_scheme_name,qatr_category,qatr_result,qaru_name,qaru_layer,qaru_error_level,qaru_is_active,qaru_client_name,qatr_program_name from qa_apex_app_pkg.get_faceted_search_dashboard_data(nv(''APP_PAGE_ID''), ''TEST_REPORT'') ',
+    p_truncate_if_exists => 'YES');
+
+  exception
+    when others then
+      qa_logger_pkg.p_qa_log(p_text   => 'There has been an error while trying to fill the FACETED_SEARCH_DASHBOARD_DATA_P0001 collection'
+                            ,p_scope  => c_unit
+                            ,p_extra  => sqlerrm
+                            ,p_params => l_param_list);
+      raise;
+  end p_fill_faceted_search_collection;
 
 end qa_apex_app_pkg;
 /

@@ -28,6 +28,8 @@ PROMPT src/plsql/vw/qa_overview_timeline_failure_p0001_v.sql
 @src/plsql/vw/qa_overview_timeline_failure_p0001_v.sql
 PROMPT src/plsql/vw/qa_overview_timeline_success_p0001_v.sql
 @src/plsql/vw/qa_overview_timeline_success_p0001_v.sql
+PROMPT src/plsql/vw/qa_faceted_search_dashboard_data_p0001_v.sql
+@src/plsql/vw/qa_faceted_search_dashboard_data_p0001_v.sql
 PROMPT src/plsql/vw/qa_unit_test_packages_p0002_v.sql
 @src/plsql/vw/qa_unit_test_packages_p0002_v.sql
 PROMPT src/plsql/vw/qa_test_runtime_error_p0003_v.sql

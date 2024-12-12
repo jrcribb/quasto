@@ -154,6 +154,9 @@ begin
   l_object(l_index).object_name := 'QA_OVERVIEW_TIMELINE_SUCCESS_P0001_V';
   l_object(l_index).object_type := 'VIEW';
   l_index := l_index + 1;
+  l_object(l_index).object_name := 'QA_FACETED_SEARCH_DASHBOARD_DATA_P0001_V';
+  l_object(l_index).object_type := 'VIEW';
+  l_index := l_index + 1;
   l_object(l_index).object_name := 'QA_UNIT_TEST_PACKAGES_P0002_V';
   l_object(l_index).object_type := 'VIEW';
   l_index := l_index + 1;

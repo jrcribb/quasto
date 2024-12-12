@@ -8,6 +8,6 @@ select qatr_result testcase_status
          when 'Error' then '#7a1616'
          else '#1c6d11'
        end as color_hex
-from table(qa_apex_app_pkg.get_faceted_search_dashboard_data(nv('APP_PAGE_ID'), 'TEST_REPORT'))
+from QA_FACETED_SEARCH_DASHBOARD_DATA_P0001_V
 ;
 /

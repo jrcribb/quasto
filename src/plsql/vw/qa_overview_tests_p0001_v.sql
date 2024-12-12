@@ -1,7 +1,9 @@
 
   CREATE OR REPLACE FORCE EDITIONABLE VIEW "QA_OVERVIEW_TESTS_P0001_V"
   AS 
-select qatr.qatr_id, 
+  with VC_QA_TEST_RUN_INVALID_OBJECTS as
+  ( select qato_qatr_id, 1 invalid_exists  from ( select distinct qato_qatr_id from QA_TEST_RUN_INVALID_OBJECTS ) ) 
+  select qatr.qatr_id, 
        qatr.qatr_scheme_name,
        trunc(qatr.qatr_date) as qatr_date,
        case qatr.qatr_result
@@ -11,9 +13,7 @@ select qatr.qatr_id,
        end as qatr_result,
        qaru.qaru_client_name,
        case when qatr.qatr_result in (0,2)
-                 and exists (select null
-                             from QA_TEST_RUN_INVALID_OBJECTS qato
-                             where qato.qato_qatr_id = qatr.qatr_id)
+                 and vc.invalid_exists = 1
                  then '<a href="' || APEX_PAGE.GET_URL(p_page   => 4,          
                                                        p_items  => 'P4_QATR_ID',
                                                        p_values => qatr.qatr_id) || 
@@ -40,6 +40,8 @@ select qatr.qatr_id,
 from QA_TEST_RUNS qatr
 join QA_RULES qaru
 on qaru.qaru_id = qatr.qatr_qaru_id
+left join VC_QA_TEST_RUN_INVALID_OBJECTS vc 
+on vc.qato_qatr_id = qatr.qatr_id
 order by qaru.qaru_client_name asc,
          qatr.qatr_date desc,
          qatr.qatr_scheme_name asc,
