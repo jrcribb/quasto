@@ -1,5 +1,6 @@
 create or replace force view qa_scheme_names_for_testing_v AS
-select username
+  CREATE OR REPLACE FORCE EDITIONABLE VIEW "QA_SCHEME_NAMES_FOR_TESTING_V" ("USERNAME") AS 
+  select username
 from all_users
 where username not in ( -- ORACLE
                        'SYS'
@@ -69,20 +70,11 @@ where username not in ( -- ORACLE
                       ,'APEX_LISTENER'
                       ,'APEX_PUBLIC_USER'
                       ,'APEX_REST_PUBLIC_USER'
-                      ,'APEX_180100'
-                      ,'APEX_180200'
-                      ,'APEX_190100'
-                      ,'APEX_190200'
-                      ,'APEX_200100'
-                      ,'APEX_200200'
-                      ,'APEX_210100'
-                      ,'APEX_210200'
-                      ,'APEX_220100'
-                      ,'APEX_220200'
                       ,'FLOWS_FILES'
                        -- ORDS
                       ,'ORDS_METADATA'
                       ,'ORDS_PUBLIC_USER'
                        --Public
-                      ,'PUBLIC');
-/
+                      ,'PUBLIC')
+    -- APEX owner
+and not regexp_like(username, '^APEX_[0-9]{4}00$');
