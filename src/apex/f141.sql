@@ -37,12 +37,12 @@ prompt APPLICATION 141 - QUASTO
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     13
---       Items:                   46
+--       Items:                   47
 --       Validations:              4
---       Processes:               17
+--       Processes:               16
 --       Regions:                 48
 --       Buttons:                 28
---       Dynamic Actions:         16
+--       Dynamic Actions:         17
 --     Shared Components:
 --       Logic:
 --         Items:                  2
@@ -14986,12 +14986,19 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'DASHBOARD'
 ,p_step_title=>'Dashboard'
 ,p_autocomplete_on_off=>'OFF'
+,p_javascript_code=>'let waitSpinner;'
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '#t_Button_rightControlButton {',
 '    bottom: 20px;',
 '    background: #056ac8;',
 '    color: #ffffff;',
 '    border-color: #00000013;',
+'}',
+'#t_Header, #t_Body_nav {',
+'    z-index: 901 !important;',
+'}',
+'#apex_wait_overlay {',
+'    z-index: 900 !important;',
 '}'))
 ,p_step_template=>wwv_flow_imp.id(50686162692675091)
 ,p_page_template_options=>'#DEFAULT#'
@@ -15041,6 +15048,7 @@ wwv_flow_imp_page.create_report_region(
 ,p_source_type=>'NATIVE_SQL_REPORT'
 ,p_query_type=>'TABLE'
 ,p_query_table=>'QA_OVERVIEW_TESTS_P0001_V'
+,p_query_where=>':P1_LAZY_LOADING = 1'
 ,p_include_rowid_column=>false
 ,p_ajax_enabled=>'Y'
 ,p_ajax_items_to_submit=>'P1_CATEGORIES,P1_PROJECT,P1_SCHEME,P1_TEST_RESULT,P1_ERRORLEVEL,P1_EXECUTION_DATE'
@@ -15248,7 +15256,6 @@ wwv_flow_imp_page.create_report_columns(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(53667478103955092)
 ,p_plug_name=>'Charts'
-,p_region_name=>'QUOTA_CHART'
 ,p_parent_plug_id=>wwv_flow_imp.id(53668689025955104)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(50790142840675136)
@@ -15262,6 +15269,7 @@ wwv_flow_imp_page.create_page_plug(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(53667537845955093)
 ,p_plug_name=>'Quota Chart'
+,p_region_name=>'QUOTA_CHART'
 ,p_parent_plug_id=>wwv_flow_imp.id(53667478103955092)
 ,p_region_template_options=>'#DEFAULT#:t-Region--removeHeader js-removeLandmark:t-Region--scrollBody'
 ,p_component_template_options=>'#DEFAULT#'
@@ -15303,6 +15311,7 @@ wwv_flow_imp_page.create_jet_chart_series(
 ,p_data_source_type=>'TABLE'
 ,p_ajax_items_to_submit=>'P1_CATEGORIES,P1_PROJECT,P1_SCHEME,P1_TEST_RESULT,P1_ERRORLEVEL,P1_EXECUTION_DATE'
 ,p_query_table=>'QA_OVERVIEW_QUOTA_P0001_V'
+,p_query_where=>':P1_LAZY_LOADING = 1'
 ,p_include_rowid_column=>false
 ,p_items_value_column_name=>'STATUS_AMOUNT'
 ,p_items_label_column_name=>'TESTCASE_STATUS'
@@ -15317,6 +15326,7 @@ wwv_flow_imp_page.create_jet_chart_series(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(53668118104955098)
 ,p_plug_name=>'Timeline Chart'
+,p_region_name=>'TIMELINE_CHART'
 ,p_parent_plug_id=>wwv_flow_imp.id(53667478103955092)
 ,p_region_template_options=>'#DEFAULT#:t-Region--removeHeader js-removeLandmark:t-Region--scrollBody'
 ,p_component_template_options=>'#DEFAULT#'
@@ -15360,6 +15370,7 @@ wwv_flow_imp_page.create_jet_chart_series(
 ,p_data_source_type=>'TABLE'
 ,p_ajax_items_to_submit=>'P1_CATEGORIES,P1_PROJECT,P1_SCHEME,P1_TEST_RESULT,P1_ERRORLEVEL,P1_EXECUTION_DATE'
 ,p_query_table=>'QA_OVERVIEW_TIMELINE_SUCCESS_P0001_V'
+,p_query_where=>':P1_LAZY_LOADING = 1'
 ,p_include_rowid_column=>false
 ,p_series_name_column_name=>'TESTCASE_STATUS'
 ,p_items_value_column_name=>'STATUS_AMOUNT'
@@ -15382,6 +15393,7 @@ wwv_flow_imp_page.create_jet_chart_series(
 ,p_data_source_type=>'TABLE'
 ,p_ajax_items_to_submit=>'P1_CATEGORIES,P1_PROJECT,P1_SCHEME,P1_TEST_RESULT,P1_ERRORLEVEL,P1_EXECUTION_DATE'
 ,p_query_table=>'QA_OVERVIEW_TIMELINE_FAILURE_P0001_V'
+,p_query_where=>':P1_LAZY_LOADING = 1'
 ,p_include_rowid_column=>false
 ,p_series_name_column_name=>'TESTCASE_STATUS'
 ,p_items_value_column_name=>'STATUS_AMOUNT'
@@ -15404,6 +15416,7 @@ wwv_flow_imp_page.create_jet_chart_series(
 ,p_data_source_type=>'TABLE'
 ,p_ajax_items_to_submit=>'P1_CATEGORIES,P1_PROJECT,P1_SCHEME,P1_TEST_RESULT,P1_ERRORLEVEL,P1_EXECUTION_DATE'
 ,p_query_table=>'QA_OVERVIEW_TIMELINE_ERROR_P0001_V'
+,p_query_where=>':P1_LAZY_LOADING = 1'
 ,p_include_rowid_column=>false
 ,p_series_name_column_name=>'TESTCASE_STATUS'
 ,p_items_value_column_name=>'STATUS_AMOUNT'
@@ -15488,6 +15501,15 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_position=>'CREATE'
 ,p_button_redirect_url=>'f?p=&APP_ID.:5:&SESSION.::&DEBUG.:::'
 ,p_icon_css_classes=>'fa-file-o'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(15020491569979834)
+,p_name=>'P1_LAZY_LOADING'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(53668689025955104)
+,p_use_cache_before_default=>'NO'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(50026191771358533)
@@ -15673,10 +15695,24 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_bind_event_type=>'apexafterclosecanceldialog'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(42250855318031718)
+ p_id=>wwv_flow_imp.id(15021253692979842)
 ,p_event_id=>wwv_flow_imp.id(42250668839031716)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>20
+,p_action_sequence=>30
+,p_execute_on_page_init=>'N'
+,p_name=>'Refresh collection'
+,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'qa_apex_app_pkg.p_fill_faceted_search_collection();',
+''))
+,p_attribute_05=>'PLSQL'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(15021986166979849)
+,p_event_id=>wwv_flow_imp.id(42250668839031716)
+,p_event_result=>'TRUE'
+,p_action_sequence=>40
 ,p_execute_on_page_init=>'N'
 ,p_name=>'Refresh Quota Chart'
 ,p_action=>'NATIVE_REFRESH'
@@ -15687,7 +15723,7 @@ wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(42250900874031719)
 ,p_event_id=>wwv_flow_imp.id(42250668839031716)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>30
+,p_action_sequence=>50
 ,p_execute_on_page_init=>'N'
 ,p_name=>'Refresh Timeline Chart'
 ,p_action=>'NATIVE_REFRESH'
@@ -15698,7 +15734,7 @@ wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(22079294077883201)
 ,p_event_id=>wwv_flow_imp.id(42250668839031716)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>40
+,p_action_sequence=>60
 ,p_execute_on_page_init=>'N'
 ,p_name=>'Refresh Report'
 ,p_action=>'NATIVE_REFRESH'
@@ -15709,7 +15745,7 @@ wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(43123012308871101)
 ,p_event_id=>wwv_flow_imp.id(42250668839031716)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>50
+,p_action_sequence=>70
 ,p_execute_on_page_init=>'N'
 ,p_name=>'Refresh Filter region'
 ,p_action=>'NATIVE_REFRESH'
@@ -15745,7 +15781,7 @@ wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(15020127762979831)
 ,p_event_id=>wwv_flow_imp.id(50904210902097603)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>20
+,p_action_sequence=>30
 ,p_execute_on_page_init=>'N'
 ,p_name=>'Refresh Report'
 ,p_action=>'NATIVE_REFRESH'
@@ -15756,7 +15792,7 @@ wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(50904357709097604)
 ,p_event_id=>wwv_flow_imp.id(50904210902097603)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>30
+,p_action_sequence=>40
 ,p_execute_on_page_init=>'N'
 ,p_name=>'Refresh Quota Chart'
 ,p_action=>'NATIVE_REFRESH'
@@ -15767,7 +15803,7 @@ wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(51633519640081204)
 ,p_event_id=>wwv_flow_imp.id(50904210902097603)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>40
+,p_action_sequence=>50
 ,p_execute_on_page_init=>'N'
 ,p_name=>'Refresh Timeline Chart'
 ,p_action=>'NATIVE_REFRESH'
@@ -15828,17 +15864,125 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(50026038309358532)
 );
-wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(15020346898979833)
-,p_process_sequence=>10
-,p_process_point=>'BEFORE_HEADER'
-,p_process_type=>'NATIVE_PLSQL'
-,p_process_name=>'Fill collection initially'
-,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(15020512183979835)
+,p_name=>'Lazy loading refresh'
+,p_event_sequence=>70
+,p_bind_type=>'bind'
+,p_bind_event_type=>'ready'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(15020680603979836)
+,p_event_id=>wwv_flow_imp.id(15020512183979835)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_SET_VALUE'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P1_LAZY_LOADING'
+,p_attribute_01=>'STATIC_ASSIGNMENT'
+,p_attribute_02=>'1'
+,p_attribute_09=>'N'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(15021337945979843)
+,p_event_id=>wwv_flow_imp.id(15020512183979835)
+,p_event_result=>'TRUE'
+,p_action_sequence=>30
+,p_execute_on_page_init=>'N'
+,p_name=>'require js wait'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'requirejs.config({ waitSeconds: 10 });'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(15021465950979844)
+,p_event_id=>wwv_flow_imp.id(15020512183979835)
+,p_event_result=>'TRUE'
+,p_action_sequence=>40
+,p_execute_on_page_init=>'N'
+,p_name=>'Waiting spinner'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'waitSpinner = apex.widget.waitPopup();'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(42250855318031718)
+,p_event_id=>wwv_flow_imp.id(15020512183979835)
+,p_event_result=>'TRUE'
+,p_action_sequence=>50
+,p_execute_on_page_init=>'N'
+,p_name=>'Fill collection'
+,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'qa_apex_app_pkg.p_fill_faceted_search_collection();',
 ''))
-,p_process_clob_language=>'PLSQL'
-,p_internal_uid=>15020346898979833
+,p_attribute_05=>'PLSQL'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(15020857271979838)
+,p_event_id=>wwv_flow_imp.id(15020512183979835)
+,p_event_result=>'TRUE'
+,p_action_sequence=>60
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
+,p_attribute_01=>'null;'
+,p_attribute_02=>'P1_LAZY_LOADING'
+,p_attribute_05=>'PLSQL'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(15020799896979837)
+,p_event_id=>wwv_flow_imp.id(15020512183979835)
+,p_event_result=>'TRUE'
+,p_action_sequence=>80
+,p_execute_on_page_init=>'N'
+,p_name=>'Refresh Report'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(15081484244011701)
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(15020989497979839)
+,p_event_id=>wwv_flow_imp.id(15020512183979835)
+,p_event_result=>'TRUE'
+,p_action_sequence=>90
+,p_execute_on_page_init=>'N'
+,p_name=>'Refresh filter'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(50026038309358532)
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(15021049211979840)
+,p_event_id=>wwv_flow_imp.id(15020512183979835)
+,p_event_result=>'TRUE'
+,p_action_sequence=>100
+,p_execute_on_page_init=>'N'
+,p_name=>'Refresh filter'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(53668118104955098)
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(15021178379979841)
+,p_event_id=>wwv_flow_imp.id(15020512183979835)
+,p_event_result=>'TRUE'
+,p_action_sequence=>110
+,p_execute_on_page_init=>'N'
+,p_name=>'Refresh filter'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(53667537845955093)
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(15021682364979846)
+,p_event_id=>wwv_flow_imp.id(15020512183979835)
+,p_event_result=>'TRUE'
+,p_action_sequence=>130
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'waitSpinner.remove();'
 );
 end;
 /

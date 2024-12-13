@@ -9,13 +9,24 @@
 -- --------------------------------------------------------------------------------
 
 -- ----------------------------------------
+-- Page: 1 - Dashboard > Dynamic Action: Lazy loading refresh > Action: Execute Server-side Code > Settings > PL/SQL Code
+
+null;
+
+-- ----------------------------------------
 -- Page: 1 - Dashboard > Dynamic Action: Filter Regions > Action: Refresh collection > Settings > PL/SQL Code
 
 qa_apex_app_pkg.p_fill_faceted_search_collection();
 
 
 -- ----------------------------------------
--- Page: 1 - Dashboard > Process: Fill collection initially > Source > PL/SQL Code
+-- Page: 1 - Dashboard > Dynamic Action: Lazy loading refresh > Action: Fill collection > Settings > PL/SQL Code
+
+qa_apex_app_pkg.p_fill_faceted_search_collection();
+
+
+-- ----------------------------------------
+-- Page: 1 - Dashboard > Dynamic Action: Refresh Reports after Dialog closed (Breadcrumb) > Action: Refresh collection > Settings > PL/SQL Code
 
 qa_apex_app_pkg.p_fill_faceted_search_collection();
 
