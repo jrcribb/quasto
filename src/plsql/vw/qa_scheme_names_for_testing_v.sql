@@ -1,6 +1,5 @@
 create or replace force view qa_scheme_names_for_testing_v AS
-  CREATE OR REPLACE FORCE EDITIONABLE VIEW "QA_SCHEME_NAMES_FOR_TESTING_V" ("USERNAME") AS 
-  select username
+select username
 from all_users
 where username not in ( -- ORACLE
                        'SYS'
