@@ -616,6 +616,7 @@ The new features will include a major overhaul of the unit test generation. The 
 
 ## Latest Releases
 
+- [Release 24.1](https://github.com/mt-ag/quasto/releases/tag/v24.1)
 - [Release 23.2.1](https://github.com/mt-ag/quasto/releases/tag/v23.2.1)
 - [Release 1.1](https://github.com/mt-ag/quasto/releases/tag/v1.1)
 - [Release 1.0](https://github.com/mt-ag/quasto/releases/tag/v1.0)
